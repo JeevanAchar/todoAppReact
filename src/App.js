@@ -114,7 +114,6 @@ const App = () => {
                                 </div>
                                 <div>
                                     <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteCompletedTodo(index)} />
-                                    {/* <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(index)} /> */}
                                 </div>
                             </div>
                         )
