@@ -22,13 +22,15 @@ const App = () => {
 
     const handleDeleteTodo = (index) => {
         let reduceTodo = [...todos];
-        reduceTodo.splice(index);
+        console.log(todos);
+        reduceTodo.splice(index, 1);
         setTodos(reduceTodo);
+        console.log(reduceTodo);
         localStorage.setItem("todolist", JSON.stringify(reduceTodo));
     }
     const handleDeleteCompletedTodo= (index)=>{
         let reduceTodo = [...completedTodos];
-        reduceTodo.splice(index);
+        reduceTodo.splice(index,1);
         setCompletedTodos(reduceTodo);
         localStorage.setItem("completedTodo", JSON.stringify(reduceTodo));
     }
@@ -97,8 +99,8 @@ const App = () => {
                                     <p>{item.desc}</p>
                                 </div>
                                 <div>
-                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(index)} />
-                                    <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(index)} />
+                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(console.log(index+"delete logo"))} />
+                                    <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(console.log(index))} />
                                 </div>
                             </div>
                         )
