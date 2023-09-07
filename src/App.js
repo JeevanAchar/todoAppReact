@@ -28,9 +28,9 @@ const App = () => {
         console.log(reduceTodo);
         localStorage.setItem("todolist", JSON.stringify(reduceTodo));
     }
-    const handleDeleteCompletedTodo= (index)=>{
+    const handleDeleteCompletedTodo = (index) => {
         let reduceTodo = [...completedTodos];
-        reduceTodo.splice(index,1);
+        reduceTodo.splice(index, 1);
         setCompletedTodos(reduceTodo);
         localStorage.setItem("completedTodo", JSON.stringify(reduceTodo));
     }
@@ -38,7 +38,7 @@ const App = () => {
         let now = new Date();
         let dd = now.getDate();
         let mm = now.getMonth();
-        let mmf = mm +1;
+        let mmf = mm + 1;
         let yyyy = now.getFullYear();
         let h = now.getHours();
         let m = now.getMinutes();
@@ -55,16 +55,20 @@ const App = () => {
         handleDeleteTodo(index)
         localStorage.setItem("completedTodo", JSON.stringify(updateCompletedArr));
     }
+    const clearAll = () => {
+        localStorage.removeItem("completedTodo");
+        // window.location.reload();
+    }
     useEffect(() => {
         let savedTodo = JSON.parse(localStorage.getItem("todolist"));
         let saveCompletedTodo = JSON.parse(localStorage.getItem("completedTodo"));
         if (savedTodo) {
             setTodos(savedTodo);
         }
-        if(saveCompletedTodo){
+        if (saveCompletedTodo) {
             setCompletedTodos(saveCompletedTodo)
         }
-    },[])
+    }, [])
 
     return (
         <>
@@ -99,7 +103,7 @@ const App = () => {
                                     <p>{item.desc}</p>
                                 </div>
                                 <div>
-                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(console.log(index+"delete logo"))} />
+                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(console.log(index + "delete logo"))} />
                                     <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(console.log(index))} />
                                 </div>
                             </div>
@@ -116,9 +120,11 @@ const App = () => {
                                 </div>
                                 <div>
                                     <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteCompletedTodo(index)} />
+                                    <button onClick={clearAll()}>clear all</button>
                                 </div>
                             </div>
                         )
+
                     })}
 
                 </div>
