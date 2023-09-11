@@ -22,10 +22,8 @@ const App = () => {
 
     const handleDeleteTodo = (index) => {
         let reduceTodo = [...todos];
-        console.log(todos);
         reduceTodo.splice(index, 1);
         setTodos(reduceTodo);
-        console.log(reduceTodo);
         localStorage.setItem("todolist", JSON.stringify(reduceTodo));
     }
     const handleDeleteCompletedTodo = (index) => {
@@ -97,14 +95,14 @@ const App = () => {
 
                     {isCompeteScreen === false && todos.map((item, index) => {
                         return (
-                            <div className="todo-list">
-                                <div className="todo-list-item" key={index}>
+                            <div className="todo-list" key={index}>
+                                <div className="todo-list-item" >
                                     <h3>{item.title}</h3>
                                     <p>{item.desc}</p>
                                 </div>
                                 <div>
-                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(console.log(index + "delete logo"))} />
-                                    <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(console.log(index))} />
+                                    <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteTodo(index)} />
+                                    <BiCheckboxChecked className="check-icon" title="Compelete?" onClick={() => handleComplete(index)} />
                                 </div>
                             </div>
                         )
@@ -112,8 +110,8 @@ const App = () => {
 
                     {isCompeteScreen === true && completedTodos.map((item, index) => {
                         return (
-                            <div className="todo-list">
-                                <div className="todo-list-item" key={index}>
+                            <div className="todo-list"  key={index}>
+                                <div className="todo-list-item">
                                     <h3>{item.title}</h3>
                                     <p>{item.desc}</p>
                                     <p><small>completedOn {item.completedOn}</small></p>
