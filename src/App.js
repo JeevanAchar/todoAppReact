@@ -53,10 +53,10 @@ const App = () => {
         handleDeleteTodo(index)
         localStorage.setItem("completedTodo", JSON.stringify(updateCompletedArr));
     }
-    const clearAll = () => {
-        localStorage.removeItem("completedTodo");
-        // window.location.reload();
-    }
+    // const clearAll = () => {
+    //     localStorage.removeItem("completedTodo");
+    //     // window.location.reload();
+    // }
     useEffect(() => {
         let savedTodo = JSON.parse(localStorage.getItem("todolist"));
         let saveCompletedTodo = JSON.parse(localStorage.getItem("completedTodo"));
@@ -118,7 +118,7 @@ const App = () => {
                                 </div>
                                 <div>
                                     <AiFillDelete className="icon" title="delete" onClick={() => handleDeleteCompletedTodo(index)} />
-                                    <button onClick={clearAll()}>clear all</button>
+                                    {/* <button onClick={clearAll()}>clear all</button> */}
                                 </div>
                             </div>
                         )
